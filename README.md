@@ -21,9 +21,6 @@ Essa é uma iniciativa independente sem fins lucrativos de código aberto para f
 
 Nos exemplos usei o banco de dados iris, que ja vem no R, precisa importar o seu banco antes e o nome que ele ficar é o que se deve substituir por "iris". Pode usar as funções importarcsv ou importarexcel descritas abaixo.
 
-##site
-
-- https://github.com/eduardompeixoto/edu/Página.html
 
 
 ## instalação
