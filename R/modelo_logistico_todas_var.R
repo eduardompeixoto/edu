@@ -1,0 +1,1 @@
+modelo_logistico_todas_var<-function(x){x<-as.data.frame(x);x$desfecho<-0;x$desfecho<-tcltk::tk_select.list(colnames(x),title="desfecho");vars <- paste(colnames(x),sep="");fla <- paste(vars, collapse="+"); paste(x$desfecho,"~",fla);as.formula(fla);b<-glm(fla , data = x,family = binomial); sjPlot::tab_model(b)}

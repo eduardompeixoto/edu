@@ -1,0 +1,2 @@
+#desfecho 0 e 1
+modelo_logistico_uni<-function(x){x<-as.data.frame(x);desfecho<-tcltk::tk_select.list(colnames(x),title="desfecho");desfecho<-subset(x, select=desfecho);desfecho<-as.data.frame(desfecho);covariavel<-tcltk::tk_select.list(colnames(x),title="covariável");covariavel<-subset(x, select=covariavel);covariavel<-as.data.frame(covariavel);z<-c(desfecho,covariavel);z<-as.data.frame(z);b<-glm(z[,1] ~ z[,2], data = z,family = binomial); sjPlot::tab_model(b)}
