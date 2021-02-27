@@ -12,6 +12,7 @@ knitr::opts_chunk$set(
 	warning = FALSE
 )
 ```
+https://rnocelular.wordpress.com/2021/02/27/pacote-do-edu/
 
 ## Pacote do Edu
 
