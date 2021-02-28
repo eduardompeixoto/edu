@@ -1,17 +1,4 @@
----
-title: "Pacote edu"
-author: "Eduardo Peixoto"
-date: "27/02/2021"
-output: html_document
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(
-	echo = TRUE,
-	message = TRUE,
-	warning = FALSE
-)
-```
+## site
 https://rnocelular.wordpress.com/2021/02/27/pacote-do-edu/
 
 ## Pacote do Edu
