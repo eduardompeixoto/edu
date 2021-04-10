@@ -1,0 +1,61 @@
+---
+title: "Análise"
+output: html_document
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+X<-read.csv(file.choose())
+
+Y<-read.csv(file.choose())
+
+
+#test_desfecho_quali(banco,desfecho), as varitáveis tem que estar corretamente indicadas (numérica ou categótica),
+#apenas as variaveis de analise entram para este subset,
+#tem que nomear a variavel desfecho como desfecho, as demais serão covariáveis
+testesdesfechoqualitativo<-function(x){x<-as.data.frame(x) ;a<-epiDisplay::tableStack(c(colnames(x)),by=desfecho, dataFrame = x, percent="row", simulate.p.value = T, assumption.p.value = 0.05, test = T, var.labels = F) ;htmlTable::htmlTable(a)}
+
+#tem que ser um subset só com as numéricas
+resumosnumericos<-function(x){x<-as.data.frame(x);a<-RcmdrMisc::numSummary(x[,c(colnames(x)),  drop=FALSE], statistics=c("mean", "sd", "IQR", "quantiles"), quantiles=c(0, .25,.5,.75,1));is.num<-sapply(a, is.numeric); a[is.num]<-lapply(a[is.num],round,2); a<-a[["table"]] ;htmlTable::htmlTable(a)}
+
+
+#tem que ser um subset só com as numéricas
+correlacao<-function(x){x<-as.data.frame(x);a<-stats::cor(x[,colnames(x)], method="spearman", use="complete");a<-as.data.frame(a);is.num<-sapply(a, is.numeric); a[is.num]<-lapply(a[is.num],round,2);htmlTable::htmlTable(a)}
+
+
+```
+
+### Análise descritiva
+
+#### Resumos gerais
+
+```{r, echo=FALSE}
+gtsummary::tbl_summary(X)
+```
+
+#### Resumos Numéricos
+
+```{r, echo=FALSE}
+resumosnumericos(Y)
+```
+
+### Inferencial 
+
+#### Testes de Hipótese
+
+```{r, echo=FALSE}
+X$desfecho<-tcltk::tk_select.list(colnames(X))
+
+testesdesfechoqualitativo(X)
+```
+
+
+#### Correlação
+
+```{r, echo=FALSE}
+correlacao(Y)
+```
+
+

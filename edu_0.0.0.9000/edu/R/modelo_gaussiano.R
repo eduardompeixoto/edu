@@ -1,0 +1,1 @@
+modelo_gaussiano<-function(x){y<-x;y<-dplyr::rename(y,desfecho =tcltk::tk_select.list(colnames(y),title="desfecho"));fla <- paste("desfecho ~ .");fla<-as.formula(fla);z<-y;b<-glm(fla , data = z,family = gaussian); sjPlot::tab_model(b)}
